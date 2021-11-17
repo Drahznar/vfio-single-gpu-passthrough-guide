@@ -2,21 +2,21 @@
 Personal guide for single GPU passhtrough with KVM on Manjaro derived from [Risingprism guide](https://gitlab.com/risingprismtv/single-gpu-passthrough/-/wikis/home) and [QaidVoid guide](https://github.com/QaidVoid/Complete-Single-GPU-Passthrough)
 
 ## **Table of contents**
-* **Personal Setup**
-* **IOMMU Setup**
-* **Installing and configuration of Libvirt**
-* **Guest Setup**
-* **Prepare and attach PCI devices**
-* **Libvirt Hooks**
-* **Todos**
+* **[Personal Setup](#personal-setup)**
+* **[IOMMU Setup](#iommu-setup)**
+* **[Installing and configuration of Libvirt](#installing-and-configuration-of-libvirt)**
+* **[Guest Setup](#guest-setup)**
+* **[Libvirt Hooks](#libvirt-hooks)**
+* **[Attach PCI devices](#attach-pci-devices)**
+* **[Todos](#todos)**
 
-## **Personal Setup**
+## **Personal Setup** <div id="personal-setup"/>
 ### **Hardware Specs**
 
+## **IOMMU Setup** <div id="iommu-setup"/>
 ### **BIOS Settings**
 Enable ***Intel VT-d*** or ***AMD-Vi*** virtualization in BIOS. Hardware needs to support one of these virtualization options, otherwise this can not work. 
 
-## **IOMMU Setup**
 ### **GRUB**
 Enable IOMMU support to grub.
 
@@ -57,7 +57,7 @@ lspci | grep AMD|NVIDIA
 ```
 However it is the best to use the script to identify if the graphics card is isolated in a own IOMMU group. (Does the GPU really needs to be in an own IOMMU group to work?). Find the ID of the GPU and the associated audio controller and note them somewhere.
 
-## **Installing and configuration of Libvirt**
+## **Installing and configuration of Libvirt** <div id="installing-and-configuration-of-libvirt"/>
 Virtualization of guest system will be done with libvirt and qemu which have to be installed first. \
 **Arch Linux/ Manjaro**
 ```sh
@@ -96,13 +96,13 @@ sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
 ```
 
-## **Guest Setup**
+## **Guest Setup** <div id="guest-setup"/>
 
-## **Prepare and attach PCI devices**
+## **Libvirt Hooks** <div id="libvirt-hooks"/>
 
-## **Libvirt Hooks**
+## **Attach PCI devices** <div id="attach-pci-devices"/>
 
-## **Todos**
+## **Todos** <div id="todos"/>
 - [ ] CPU pinning
 - [ ] Passthrough a complete drive into VM instead of using a VirtIO drive (better disk performance?)
 - [ ] Improve startup.sh and teardown.sh for other dipsplaymanager
